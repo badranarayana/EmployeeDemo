@@ -1,6 +1,7 @@
 import requests
 import pprint
 
+
 class EmployeeAPIClient:
     def __init__(self, url):
         self.url = url
@@ -9,6 +10,8 @@ class EmployeeAPIClient:
         """
         HTTP --> POST
         """
+        response = requests.post(self.url, files={"file": open(file_path, 'rb')})
+        return response.json()
 
     def get_employees(self):
         """
@@ -48,12 +51,13 @@ url = 'http://127.0.0.1:5555/employee'
 client = EmployeeAPIClient(url=url)
 
 # lets upload employee excel file into backend via rest api
-file_path = 'file_path'
-#client.update_employee(file_path)
+file_path = r'C:\Users\91901\Downloads\New tst.xlsx'
+response = client.upload_employees(file_path)
+print(response)
 
 
 # lets get the all employees
-employees = client.get_employees()
+#employees = client.get_employees()
 #pprint.pprint(employees)
 
 
@@ -75,8 +79,8 @@ payload = {
 #client.update_employee(payload)
 
 # Lets delete employee by emp_id
-out = client.delete_employee(2435)
-print(out)
+#out = client.delete_employee(2435)
+#print(out)
 
 
 
