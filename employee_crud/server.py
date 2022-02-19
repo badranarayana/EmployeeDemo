@@ -24,5 +24,5 @@ def register_resources(api_instance):
 
 if __name__ == '__main__':
     register_resources(api_instance=api)
-    app.run(debug=True, host='127.0.0.1', port=5555)
+    app.run(debug=True, host='127.0.0.1', port=5000)
 

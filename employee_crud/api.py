@@ -13,8 +13,13 @@ logger = get_logger()
 class EmployeeAPI(Resource):
 
     def post(self):
+        # hard coded path
+        file_path = r'C:\Users\91901\Downloads\New tst.xlsx'
+        data_frame = pd.read_excel(file_path)
+
+        # Dynamic upload from client
         # lets load uploaded excel file into pandas dataFrame
-        data_frame = pd.read_excel(request.files.get('file'))
+        #data_frame = pd.read_excel(request.files.get('file'))
 
         # lets handle null values with default
         data_frame.fillna("DEFAULT", inplace=True)
